@@ -1,6 +1,6 @@
 <idea-plugin>
     <id>com.emamagic.EmaDBPlugin</id>
-    <name>MyPlugin</name>
+    <name>EmaDB</name>
     <version>1.0</version>
     <vendor>Emamagic</vendor>
 
