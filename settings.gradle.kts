@@ -5,4 +5,4 @@ pluginManagement {
     }
 }
 
-rootProject.name = "EmaDBPlugin"
+rootProject.name = "ema-db-plugin"
