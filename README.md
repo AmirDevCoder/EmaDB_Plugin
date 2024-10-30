@@ -1,11 +1,11 @@
 # EmaDBPlugin
 
-EmaDBPlugin is an IntelliJ IDEA plugin that provides static code analysis for [EmaDB ORM](https://github.com/AmirDevCoder/EmaDB) annotations. With this plugin, developers working with EmaDB benefit from real-time feedback and suggestions, helping them catch configuration and annotation issues early in the development process. This plugin supports your EmaDB library, making sure it’s used effectively and consistently in your Java projects.
+EmaDBPlugin is an IntelliJ IDEA plugin that provides static code analysis for [EmaDB ORM](https://github.com/AmirDevCoder/EmaDB) annotations. With this plugin, developers working with [EmaDB](https://github.com/AmirDevCoder/EmaDB) benefit from real-time feedback and suggestions, helping them catch configuration and annotation issues early in the development process. This plugin supports your [EmaDB](https://github.com/AmirDevCoder/EmaDB) library, making sure it’s used effectively and consistently in your Java projects.
 
 ## Features
 
-- **Annotation Validation**: Automatically verifies EmaDB annotations, helping you catch mistakes before compilation.
-- **Code Inspections**: Checks for mandatory fields and correct usage of EmaDB annotations like `@Entity`, `@Id`, `@Transient`, and `@Unique`.
+- **Annotation Validation**: Automatically verifies [EmaDB](https://github.com/AmirDevCoder/EmaDB) annotations, helping you catch mistakes before compilation.
+- **Code Inspections**: Checks for mandatory fields and correct usage of [EmaDB](https://github.com/AmirDevCoder/EmaDB) annotations like `@Entity`, `@Id`, `@Transient`, and `@Unique`.
 - **Quick Fix Suggestions**: Provides automatic suggestions to correct annotation usage, missing configurations, or misnamed fields.
 - **Ease of Use**: Seamlessly integrates into IntelliJ, helping you focus on code quality.
 
@@ -22,16 +22,16 @@ EmaDBPlugin is an IntelliJ IDEA plugin that provides static code analysis for [E
    3. Click **Install Plugin from Disk...**  
    4. Choose the downloaded `ema-db-plugin-1.0.zip` file and click **OK**.
 
-3. **Enable EmaDB Inspections**  
-   1. After installing, ensure that EmaDB inspections are enabled:
+3. **Enable [EmaDB](https://github.com/AmirDevCoder/EmaDB) Inspections**  
+   1. After installing, ensure that [EmaDB](https://github.com/AmirDevCoder/EmaDB) inspections are enabled:
       - Go to **Settings** > **Editor** > **Inspections**.
-      - Check the EmaDB inspections to activate them.
+      - Check the [EmaDB](https://github.com/AmirDevCoder/EmaDB) inspections to activate them.
 
 ---
 
 ## Usage
 
-Once installed, EmaDBPlugin automatically analyzes classes using EmaDB annotations, providing feedback in real-time. Here’s what you can expect:
+Once installed, EmaDBPlugin automatically analyzes classes using [EmaDB](https://github.com/AmirDevCoder/EmaDB) annotations, providing feedback in real-time. Here’s what you can expect:
 
 - **Real-time Annotation Checks**: Validates required annotations and their usage in your project.
 - **Error Marking**: Highlights incorrect or missing annotations directly in the code editor.
@@ -57,4 +57,4 @@ EmaDBPlugin is licensed under the MIT License. See the [LICENSE](./LICENSE) file
 
 ---
 
-Happy coding with EmaDBPlugin! 🎉 Let the plugin handle the nitty-gritty, so you can focus on building awesome things with EmaDB. If anything goes amiss, remember: code is like a puzzle—sometimes you just need a plugin to find the missing piece. 😉
+Happy coding with EmaDBPlugin! 🎉 Let the plugin handle the nitty-gritty, so you can focus on building awesome things with [EmaDB](https://github.com/AmirDevCoder/EmaDB). If anything goes amiss, remember: code is like a puzzle—sometimes you just need a plugin to find the missing piece. 😉
