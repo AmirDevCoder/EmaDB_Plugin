@@ -10,7 +10,8 @@ import java.util.ResourceBundle;
 
 public class ConfigAnnotationInspection extends LocalInspectionTool {
     private static final ResourceBundle bundle = ResourceBundle.getBundle("messages.InspectionBundle");
-    private static final String MESSAGE = bundle.getString("inspection.configAnnotation.description");
+    private static final String MESSAGE_INTERFACE = bundle.getString("inspection.configAnnotation.interface.description");
+    private static final String MESSAGE_CLASS_ONLY = bundle.getString("inspection.configAnnotation.classOnly.description");
 
     @Override
     public @NotNull PsiElementVisitor buildVisitor(@NotNull ProblemsHolder holder, boolean isOnTheFly) {
@@ -25,19 +26,34 @@ public class ConfigAnnotationInspection extends LocalInspectionTool {
 
             public void visitClass(@NotNull PsiClass aClass) {
                 if (aClass.hasAnnotation("com.emamagic.annotation.Config")) {
-                    boolean implementsMyInterface = false;
+
+                    if (aClass.isInterface() || aClass.isEnum()) {
+                        holder.registerProblem(
+                                Objects.requireNonNull(aClass.getNameIdentifier()),
+                                MESSAGE_CLASS_ONLY,
+                                ProblemHighlightType.GENERIC_ERROR,
+                                new QuickFix.RemoveAnnotationQuickFix(
+                                        "com.emamagic.annotation.Config",
+                                        "Remove @Config annotation"
+                                )
+                        );
+                        return;
+                    }
+
+                    boolean implementsIConfig = false;
                     for (PsiClass anInterface : aClass.getInterfaces()) {
-                        if ("com.emamagic.conf.EmaConfig".equals(anInterface.getQualifiedName())) {
-                            implementsMyInterface = true;
+                        if ("com.emamagic.conf.IConfig".equals(anInterface.getQualifiedName())) {
+                            implementsIConfig = true;
                             break;
                         }
                     }
-                    if (!implementsMyInterface) {
+
+                    if (!implementsIConfig) {
                         holder.registerProblem(
                                 Objects.requireNonNull(aClass.getNameIdentifier()),
-                                MESSAGE,
+                                MESSAGE_INTERFACE,
                                 ProblemHighlightType.GENERIC_ERROR,
-                                new ImplementEmaConfigQuickFix()
+                                new QuickFix.ImplementIConfigQuickFix()
                         );
                     }
                 }
@@ -45,25 +61,4 @@ public class ConfigAnnotationInspection extends LocalInspectionTool {
         };
     }
 
-    private static class ImplementEmaConfigQuickFix implements LocalQuickFix {
-        @NotNull
-        @Override
-        public String getFamilyName() {
-            return "Implement EmaConfig interface";
-        }
-
-        @Override
-        public void applyFix(@NotNull Project project, @NotNull ProblemDescriptor descriptor) {
-            PsiClass psiClass = (PsiClass) descriptor.getPsiElement().getParent();
-            if (psiClass != null) {
-                PsiElementFactory factory = PsiElementFactory.getInstance(project);
-                PsiReferenceList referenceList = psiClass.getImplementsList();
-                if (referenceList != null) {
-                    referenceList.add(factory.createReferenceElementByFQClassName("com.emamagic.conf.EmaConfig", psiClass.getResolveScope()));
-                }
-            }
-        }
-    }
 }
-
-
